@@ -140,17 +140,7 @@ L'application sera accessible sur :
 - **Frontend** : http://localhost:8081
 - **Backend API** : http://localhost:5000
 
-## 🔑 Comptes de Test
 
-### Administrateur
-- **Email** : `admin@shopease.com`
-- **Mot de passe** : `Admin123!`
-
-### Utilisateur
-- **Email** : `john@example.com`
-- **Mot de passe** : `User123!`
-
-## 📡 API Endpoints
 
 ### Authentification
 ```
