@@ -97,7 +97,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setUser(response.data.user);
         toast({
           title: "Registration successful",
-          description: `Welcome to ShopEase Suite, ${response.data.user.firstName}!`,
+          description: `Welcome to MarketEase, ${response.data.user.firstName}!`,
         });
         return true;
       } else {

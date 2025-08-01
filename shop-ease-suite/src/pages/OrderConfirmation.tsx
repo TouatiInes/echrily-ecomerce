@@ -59,13 +59,7 @@ const OrderConfirmation = () => {
       
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
-          <Breadcrumb
-            items={[
-              { label: 'Shopping Cart', href: '/cart' },
-              { label: 'Checkout', href: '/checkout' },
-              { label: 'Order Confirmation' }
-            ]}
-          />
+
 
           <CheckoutProgress currentStep="confirmation" />
 

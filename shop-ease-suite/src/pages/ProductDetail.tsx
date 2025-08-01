@@ -8,7 +8,9 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Star, ShoppingCart, ArrowLeft, Heart } from 'lucide-react';
-import { products } from '@/data/products';
+import productService from '@/services/productService';
+import { Product as UIProduct } from '@/types/product';
+import { useEffect } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { toast } from '@/components/ui/use-toast';
 
@@ -16,12 +18,50 @@ const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [product, setProduct] = useState<UIProduct | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const product = products.find(p => p.id === id);
+  useEffect(() => {
+    if (!id) return;
+    setLoading(true);
+    setError(null);
+    productService.getProduct(id)
+      .then((res) => {
+        let apiProduct: any = res.data;
+        if (apiProduct && typeof apiProduct === 'object' && 'product' in apiProduct) {
+          apiProduct = apiProduct.product;
+        }
+        setProduct({
+          id: apiProduct._id,
+          name: apiProduct.name,
+          description: apiProduct.description,
+          price: apiProduct.price,
+          image: apiProduct.images && apiProduct.images.length > 0 ? apiProduct.images[0].url : '/placeholder.svg',
+          category: apiProduct.category,
+          rating: apiProduct.rating?.average || 0,
+          reviews: apiProduct.rating?.count || 0,
+          inStock: apiProduct.inStock,
+        });
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError('Product not found');
+        setLoading(false);
+      });
+  }, [id]);
 
-  if (!product) {
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <span>Loading...</span>
+      </div>
+    );
+  }
+  if (error || !product) {
     return (
       <div className="min-h-screen bg-background">
         <Header onSearch={() => {}} onCategoryFilter={() => {}} />
@@ -39,6 +79,7 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
+    if (!product) return;
     for (let i = 0; i < quantity; i++) {
       addToCart(product);
     }
@@ -68,8 +109,9 @@ const ProductDetail = () => {
       <div className="container mx-auto px-4 py-8">
         <Breadcrumb
           items={[
+            { label: 'Home', href: '/' },
             { label: 'Products', href: '/products' },
-            { label: product.category, href: `/products?category=${encodeURIComponent(product.category)}` },
+            { label: 'Cart', href: '/cart' },
             { label: product.name }
           ]}
         />

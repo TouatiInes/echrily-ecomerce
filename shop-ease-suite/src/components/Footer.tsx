@@ -8,7 +8,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              ShopEase
+              MarketEase
             </h3>
             <p className="text-muted-foreground text-sm">
               Your trusted partner for quality products and exceptional shopping experience.
@@ -26,14 +26,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Categories */}
+          {/* Main Navigation */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Categories</h4>
+            <h4 className="font-semibold text-foreground">Main</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Electronics</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Fashion</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Home & Garden</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Sports</a></li>
+              <li><a href="/" className="hover:text-primary transition-colors">Home</a></li>
+              <li><a href="/products" className="hover:text-primary transition-colors">Products</a></li>
+              <li><a href="/cart" className="hover:text-primary transition-colors">Cart</a></li>
             </ul>
           </div>
 
@@ -52,7 +51,7 @@ export function Footer() {
         <Separator className="my-8" />
 
         <div className="text-center text-sm text-muted-foreground">
-          © 2024 ShopEase. All rights reserved.
+          © 2024 MarketEase. All rights reserved.
         </div>
       </div>
     </footer>

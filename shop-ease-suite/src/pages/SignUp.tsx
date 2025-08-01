@@ -91,7 +91,7 @@ const SignUp = () => {
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">Create Account</CardTitle>
               <CardDescription>
-                Join ShopEase Suite and start shopping today
+                Join MarketEase and start shopping today
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">

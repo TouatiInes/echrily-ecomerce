@@ -102,7 +102,9 @@ const Checkout = () => {
       <div className="container mx-auto px-4 py-8">
         <Breadcrumb
           items={[
-            { label: 'Shopping Cart', href: '/cart' },
+            { label: 'Home', href: '/' },
+            { label: 'Products', href: '/products' },
+            { label: 'Cart', href: '/cart' },
             { label: 'Checkout' }
           ]}
         />

@@ -28,7 +28,7 @@ export function Header({ onSearch }: HeaderProps) {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-              ShopEase Suite
+              MarketEase
             </Link>
           </div>
 
