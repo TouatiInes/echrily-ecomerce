@@ -1,4 +1,4 @@
-# 🛒 ShopEase Suite
+# 🛒 MarketEase
 
 Une application e-commerce moderne et complète construite avec la stack MERN (MongoDB, Express.js, React, Node.js). ShopEase Suite offre une expérience d'achat fluide avec un système d'authentification sécurisé, une gestion avancée des produits, et une interface utilisateur moderne.
 
