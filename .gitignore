@@ -103,3 +103,12 @@ uploads/
 # Temporary files
 tmp/
 temp/
+
+# Vercel
+.vercel
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Bun lockfile
+bun.lockb

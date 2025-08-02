@@ -1,0 +1,37 @@
+{
+  "name": "echrily-ecommerce-app",
+  "version": "1.0.0",
+  "description": "Full-stack e-commerce application with React frontend and Node.js backend",
+  "private": true,
+  "workspaces": [
+    "shop-ease-suite",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd shop-ease-suite && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "cd shop-ease-suite && npm run build",
+    "build:frontend": "cd shop-ease-suite && npm run build",
+    "start:backend": "cd backend && npm start",
+    "install:all": "npm install && cd shop-ease-suite && npm install && cd ../backend && npm install",
+    "seed": "cd backend && node utils/seeder.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "react",
+    "nodejs",
+    "mongodb",
+    "express",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

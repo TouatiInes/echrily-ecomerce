@@ -70,6 +70,38 @@ shop-ease-suite/
 │   └── utils/         # Utilitaires frontend
 ```
 
+## 🚀 Déploiement
+
+### 📦 Déploiement sur Vercel
+
+1. **Préparer le repository GitHub :**
+   ```bash
+   git add .
+   git commit -m "Prepare for deployment"
+   git push origin main
+   ```
+
+2. **Configurer Vercel :**
+   - Connectez votre repository GitHub à Vercel
+   - Définissez le répertoire racine sur `shop-ease-suite`
+   - Ajoutez les variables d'environnement :
+     - `VITE_API_URL` : URL de votre API backend
+     - `VITE_APP_NAME` : ShopEase Suite
+
+3. **Variables d'environnement requises :**
+   ```env
+   VITE_API_URL=https://your-backend-api.com/api
+   VITE_APP_NAME=ShopEase Suite
+   VITE_APP_VERSION=1.0.0
+   ```
+
+### 🔧 Backend Deployment
+Pour déployer le backend, vous pouvez utiliser :
+- **Railway** : Déploiement automatique depuis GitHub
+- **Heroku** : Avec MongoDB Atlas
+- **DigitalOcean App Platform** : Configuration simple
+- **AWS/Azure** : Pour une solution enterprise
+
 ## 🚀 Installation et Configuration
 
 ### Prérequis

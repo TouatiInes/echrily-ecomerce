@@ -32,20 +32,34 @@ app.use('/api/', limiter);
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:8080',
-  process.env.FRONTEND_URL || 'http://localhost:8081'
-];
+  'http://localhost:8081',
+  process.env.FRONTEND_URL,
+  // Add your Vercel domain here when deployed
+  'https://your-app-name.vercel.app'
+].filter(Boolean);
+
 const corsOptions = {
   origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps, curl, etc.)
+    // Allow requests with no origin (like mobile apps, curl, etc.)
     if (!origin) return callback(null, true);
+
+    // In development, allow all origins
+    if (process.env.NODE_ENV === 'development') {
+      return callback(null, true);
+    }
+
+    // In production, check allowed origins
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
+      console.log('CORS blocked origin:', origin);
       return callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 };
 app.use(cors(corsOptions));
 
