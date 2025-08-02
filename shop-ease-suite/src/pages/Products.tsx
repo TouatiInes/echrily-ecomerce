@@ -5,7 +5,8 @@ import { ProductGrid } from '@/components/ProductGrid';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import productService, { Product } from '@/services/productService';
+import productService from '@/services/productService';
+import { Product } from '@/types/product';
 import { toast } from '@/components/ui/use-toast';
 
 const Products = () => {

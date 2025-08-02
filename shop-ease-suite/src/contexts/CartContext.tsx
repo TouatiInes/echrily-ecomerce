@@ -12,24 +12,32 @@ type CartAction =
 function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
   switch (action.type) {
     case 'ADD_TO_CART': {
-      const existingItem = state.find(item => item.id === action.payload.id);
+      const productId = action.payload._id || action.payload.id;
+      const existingItem = state.find(item => (item._id || item.id) === productId);
       if (existingItem) {
         return state.map(item =>
-          item.id === action.payload.id
+          (item._id || item.id) === productId
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      return [...state, { ...action.payload, quantity: 1 }];
+      // Ensure backward compatibility by setting both _id and id
+      const cartItem = {
+        ...action.payload,
+        id: productId,
+        _id: action.payload._id,
+        quantity: 1
+      };
+      return [...state, cartItem];
     }
     case 'REMOVE_FROM_CART':
-      return state.filter(item => item.id !== action.payload);
+      return state.filter(item => (item._id || item.id) !== action.payload);
     case 'UPDATE_QUANTITY':
       if (action.payload.quantity === 0) {
-        return state.filter(item => item.id !== action.payload.id);
+        return state.filter(item => (item._id || item.id) !== action.payload.id);
       }
       return state.map(item =>
-        item.id === action.payload.id
+        (item._id || item.id) === action.payload.id
           ? { ...item, quantity: action.payload.quantity }
           : item
       );

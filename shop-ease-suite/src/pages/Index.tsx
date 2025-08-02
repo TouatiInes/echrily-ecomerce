@@ -5,7 +5,8 @@ import { HeroSection } from '@/components/HeroSection';
 import { ProductGrid } from '@/components/ProductGrid';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import productService, { Product } from '@/services/productService';
+import productService from '@/services/productService';
+import { Product } from '@/types/product';
 
 const Index = () => {
   const navigate = useNavigate();

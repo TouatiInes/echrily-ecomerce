@@ -14,13 +14,20 @@ export function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
+  // Get primary image or first image
+  const primaryImage = product.images?.find(img => img.isPrimary) || product.images?.[0];
+  const imageUrl = primaryImage?.url || product.image || '/placeholder-image.jpg';
+
+  // Get product ID (handle both _id and id)
+  const productId = product._id || product.id;
+
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
     addToCart(product);
   };
 
   const handleCardClick = () => {
-    navigate(`/products/${product.id}`);
+    navigate(`/products/${productId}`);
   };
 
   return (
@@ -30,8 +37,8 @@ export function ProductCard({ product }: ProductCardProps) {
     >
       <div className="relative overflow-hidden">
         <img
-          src={product.image}
-          alt={product.name}
+          src={imageUrl}
+          alt={primaryImage?.alt || product.name}
           className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
         />
         {!product.inStock && (
@@ -58,7 +65,7 @@ export function ProductCard({ product }: ProductCardProps) {
               <Star
                 key={i}
                 className={`w-4 h-4 ${
-                  i < Math.floor(product.rating)
+                  i < Math.floor(product.rating?.average || 0)
                     ? 'fill-accent text-accent'
                     : 'text-muted-foreground'
                 }`}
@@ -66,7 +73,7 @@ export function ProductCard({ product }: ProductCardProps) {
             ))}
           </div>
           <span className="text-sm text-muted-foreground">
-            {product.rating} ({product.reviews})
+            {product.rating?.average?.toFixed(1) || '0.0'} ({product.rating?.count || 0})
           </span>
         </div>
         

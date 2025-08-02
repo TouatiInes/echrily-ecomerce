@@ -40,9 +40,8 @@ export function ProductGrid({ products, title = "Featured Products" }: ProductGr
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
             <ProductCard
-              key={product.id}
+              key={product._id || product.id}
               product={product}
-              onProductClick={handleProductClick}
             />
           ))}
         </div>
@@ -60,11 +59,17 @@ export function ProductGrid({ products, title = "Featured Products" }: ProductGr
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="relative">
-                    <img
-                      src={selectedProduct.image}
-                      alt={selectedProduct.name}
-                      className="w-full h-64 md:h-80 object-cover rounded-lg"
-                    />
+                    {(() => {
+                      const primaryImage = selectedProduct.images?.find(img => img.isPrimary) || selectedProduct.images?.[0];
+                      const imageUrl = primaryImage?.url || selectedProduct.image || '/placeholder-image.jpg';
+                      return (
+                        <img
+                          src={imageUrl}
+                          alt={primaryImage?.alt || selectedProduct.name}
+                          className="w-full h-64 md:h-80 object-cover rounded-lg"
+                        />
+                      );
+                    })()}
                     {!selectedProduct.inStock && (
                       <Badge className="absolute top-2 right-2 bg-destructive text-destructive-foreground">
                         Out of Stock
@@ -87,7 +92,7 @@ export function ProductGrid({ products, title = "Featured Products" }: ProductGr
                           <Star
                             key={i}
                             className={`w-4 h-4 ${
-                              i < Math.floor(selectedProduct.rating)
+                              i < Math.floor(selectedProduct.rating?.average || 0)
                                 ? 'fill-accent text-accent'
                                 : 'text-muted-foreground'
                             }`}
@@ -95,7 +100,7 @@ export function ProductGrid({ products, title = "Featured Products" }: ProductGr
                         ))}
                       </div>
                       <span className="text-sm text-muted-foreground">
-                        {selectedProduct.rating} ({selectedProduct.reviews} reviews)
+                        {selectedProduct.rating?.average?.toFixed(1) || '0.0'} ({selectedProduct.rating?.count || 0} reviews)
                       </span>
                     </div>
                     
