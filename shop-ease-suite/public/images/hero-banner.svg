@@ -1,0 +1,53 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <rect width="1200" height="600" fill="url(#heroGradient)"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="100" r="50" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1100" cy="500" r="80" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="200" cy="450" r="30" fill="rgba(255,255,255,0.05)"/>
+  
+  <!-- Shopping Illustration -->
+  <g transform="translate(800, 150)">
+    <!-- Shopping Bags -->
+    <rect x="0" y="100" width="60" height="80" rx="5" fill="rgba(255,255,255,0.9)"/>
+    <rect x="80" y="120" width="50" height="70" rx="5" fill="rgba(255,255,255,0.8)"/>
+    <rect x="150" y="110" width="55" height="75" rx="5" fill="rgba(255,255,255,0.85)"/>
+    
+    <!-- Handles -->
+    <path d="M15 100 Q15 85 30 85 Q45 85 45 100" stroke="rgba(102,126,234,0.8)" stroke-width="3" fill="none"/>
+    <path d="M95 120 Q95 105 105 105 Q115 105 115 120" stroke="rgba(102,126,234,0.8)" stroke-width="3" fill="none"/>
+    <path d="M165 110 Q165 95 177 95 Q190 95 190 110" stroke="rgba(102,126,234,0.8)" stroke-width="3" fill="none"/>
+  </g>
+  
+  <!-- Text Content Area -->
+  <g transform="translate(100, 200)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">
+      Shop with Style
+    </text>
+    <text x="0" y="60" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">
+      Shop with Ease
+    </text>
+    <text x="0" y="120" font-family="Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.9)">
+      Discover amazing products at unbeatable prices
+    </text>
+    <text x="0" y="150" font-family="Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.9)">
+      Your one-stop destination for quality shopping
+    </text>
+  </g>
+  
+  <!-- CTA Button Area -->
+  <rect x="100" y="420" width="200" height="50" rx="25" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+  <text x="200" y="450" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">
+    Shop Now
+  </text>
+  
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
