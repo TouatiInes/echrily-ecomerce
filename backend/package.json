@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "build": "echo 'No build step required for backend'",
     "dev": "nodemon server.js",
     "seed": "node utils/seeder.js",
     "test": "echo \"Error: no test specified\" && exit 1"
